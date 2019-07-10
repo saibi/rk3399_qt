@@ -134,17 +134,36 @@ void Camera::setCamera(const QCameraInfo &cameraInfo)
 
     updateCaptureMode();
 
+	QCameraViewfinderSettings viewfinderSettings = m_camera->viewfinderSettings();
 
-	qDebug("DBG set viewfinderSettings");
-	QCameraViewfinderSettings viewfinderSettings;
+	qDebug("DBG default viewfinderSettings : %f~%f, %d:%d, %d*%d, %d",
+		   viewfinderSettings.minimumFrameRate(),
+		   viewfinderSettings.maximumFrameRate(),
+		   viewfinderSettings.pixelAspectRatio().width(),
+		   viewfinderSettings.pixelAspectRatio().height(),
+		   viewfinderSettings.resolution().width(),
+		   viewfinderSettings.resolution().height(),
+		   viewfinderSettings.pixelFormat() );
 
-	viewfinderSettings.setResolution(640, 480);
+
+	qDebug("DBG set viewfinderSettings 1~30, 4:3, 800*600, NV12");
+	viewfinderSettings.setResolution(800, 600);
 	viewfinderSettings.setPixelAspectRatio(4, 3);
-	viewfinderSettings.setMinimumFrameRate(10.0);
+	viewfinderSettings.setMinimumFrameRate(1.0);
 	viewfinderSettings.setMaximumFrameRate(30.0);
 	viewfinderSettings.setPixelFormat(QVideoFrame::Format_NV12);
 
 	m_camera->setViewfinderSettings(viewfinderSettings);
+
+	viewfinderSettings = m_camera->viewfinderSettings();
+	qDebug("DBG get viewfinderSettings : %f~%f, %d:%d, %d*%d, %d",
+		   viewfinderSettings.minimumFrameRate(),
+		   viewfinderSettings.maximumFrameRate(),
+		   viewfinderSettings.pixelAspectRatio().width(),
+		   viewfinderSettings.pixelAspectRatio().height(),
+		   viewfinderSettings.resolution().width(),
+		   viewfinderSettings.resolution().height(),
+		   viewfinderSettings.pixelFormat() );
 
 	m_camera->start();
 }
