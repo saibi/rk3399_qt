@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
 		QCameraViewfinderSettings settings = camera->viewfinderSettings();
 
 		// change settings
-		settings.setResolution(QSize(640, 480)); // madatory
+		settings.setResolution(QSize(1280, 960)); // madatory
 		settings.setPixelFormat(QVideoFrame::Format_NV12); // mandatory
 		settings.setPixelAspectRatio(QSize(4, 3));
 		settings.setMinimumFrameRate(10.0);
