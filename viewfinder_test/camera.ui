@@ -93,7 +93,21 @@
       <widget class="QWidget" name="viewfinderPage">
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
-         <widget class="MyCameraViewFinder" name="viewfinder" native="true"/>
+         <widget class="MyCameraViewFinder" name="viewfinder" native="true">
+          <widget class="QPushButton" name="pushButton">
+           <property name="geometry">
+            <rect>
+             <x>190</x>
+             <y>150</y>
+             <width>80</width>
+             <height>71</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </widget>
         </item>
        </layout>
       </widget>
