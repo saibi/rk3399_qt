@@ -355,8 +355,10 @@ void Camera::displayCaptureError(int id, const QCameraImageCapture::Error error,
 }
 
 void Camera::startCamera()
-{
-    m_camera->start();
+{	
+	//m_camera->start(); // start does not work
+
+	setCamera(QCameraInfo::defaultCamera()); // reset camera
 }
 
 void Camera::stopCamera()
